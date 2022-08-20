@@ -14,4 +14,9 @@ export class UserProvider {
   async create(data: Dto.CreateUserDto) {
     return await this._repository.create(data).save()
   }
+
+  async findById(userId: string) {
+    // findById
+    return await this._repository.findOne(userId);
+  }
 }
