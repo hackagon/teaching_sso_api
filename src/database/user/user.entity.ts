@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity({ name: 'user' })
 export class UserEntity extends BaseEntity {
@@ -7,6 +7,11 @@ export class UserEntity extends BaseEntity {
 
   @Column()
   email: string;
+
+  @Column({
+    // nullable: true
+  })
+  password: string;
 
   @Column({ name: 'first_name', nullable: true })
   firstName: string;
@@ -22,4 +27,10 @@ export class UserEntity extends BaseEntity {
 
   @Column({ default: 'active' })
   status: string
+
+  @CreateDateColumn({ name: 'created_at' })
+  createdAt: Date;
+
+  @UpdateDateColumn({ name: 'updated_at' })
+  updatedAt: Date;
 }
